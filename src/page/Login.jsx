@@ -20,12 +20,17 @@ function Login() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500 relative">
-      <Form
-        method="post"
-        onSubmit={handleLogin}
-        className="card w-full sm:w-96 md:w-80 lg:w-96 p-8 shadow-lg rounded-lg flex flex-col gap-y-4 bg-gray-200/45 backdrop-blur-md"
+    <div className="h-screen flex items-center justify-center relative">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
       >
+        <source src="public/6015593_Chef_Man_1280x720.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="card w-full sm:w-96 md:w-80 lg:w-96 p-8 shadow-lg rounded-lg flex flex-col gap-y-4 bg-gray-200/45 backdrop-blur-md relative z-10">
         <h4 className="text-center font-bold text-3xl">Login</h4>
         <input
           type="email"
@@ -59,7 +64,7 @@ function Login() {
             Register
           </Link>
         </p>
-      </Form>
+      </div>
     </div>
   );
 }
