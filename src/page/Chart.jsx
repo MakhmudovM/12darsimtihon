@@ -12,6 +12,7 @@ class ApexChart extends React.Component {
           width: 380,
           type: 'donut',
         },
+        
         plotOptions: {
           pie: {
             startAngle: -90,

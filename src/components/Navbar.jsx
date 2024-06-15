@@ -6,7 +6,8 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { clear } from "../features/userSlice";
 import { Link } from "react-router-dom";
-import { TiShoppingCart } from "react-icons/ti";
+import { TiShoppingCart } from "react-icons/ti"
+
 
 import Weather from "./Weather";
 function Navbar() {
