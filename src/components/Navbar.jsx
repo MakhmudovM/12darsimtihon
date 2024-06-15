@@ -84,7 +84,7 @@ function Navbar() {
 
           <div className="flex gap-6 items-center justify-center">
             <div className="dropdown dropdown-end">
-              <Link to='chart'><TiShoppingCart className="w-6 h-6"/></Link>
+              <Link to='cart'><TiShoppingCart className="w-6 h-6"/></Link>
              
               
             </div>
@@ -118,7 +118,7 @@ function Navbar() {
                 </li>
                 <li>
                   <Link to="/chart" className="justify-between">
-                    Cart
+                    Chart
                   </Link>
                 </li>
                 <li>

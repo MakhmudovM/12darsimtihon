@@ -32,7 +32,7 @@ function Home() {
     }
   };
   return (
-    <div className=" container-class mt-12 sm:mt-5">
+    <div className=" container-class mt-12 sm:mt-5 mb-10">
       <h1 className="text-3xl font-bold text-center items-center ml-auto mr-auto mb-12">
         Recipess
       </h1>

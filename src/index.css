@@ -10,3 +10,11 @@
 *{
   list-style: none;
 }
+
+/* styles.css */
+.container-custom {
+  /* Ваши стили контейнера */
+  max-width: 850px;
+  margin-right: auto;
+  margin-left: auto; /* Пример внутренних отступов */
+}

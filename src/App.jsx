@@ -14,6 +14,7 @@ import Register from "./page/Register";
 import Create from "./page/Create";
 import RecipeDetail from "./page/RecipeDetail";
 import Chart from "./page/Chart";
+import Cart from './page/Cart'
 
 //components
 import Error from "./components/Error";
@@ -55,6 +56,10 @@ function App() {
         {
           path: "/chart",
           element: <Chart />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
         },
       ],
     },
