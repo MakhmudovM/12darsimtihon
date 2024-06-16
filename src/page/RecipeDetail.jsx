@@ -14,7 +14,7 @@ function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.products);
+  const product = useSelector((state) => state.products?.items.find((item) => item.id === id));
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -72,7 +72,7 @@ function RecipeDetail() {
       <div className="mt-8 flex gap-9">
         <div className="rounded-lg bg-slate-200 w-28 items-center justify-center flex gap-4">
           <button
-            className=" text-emerald-500 text-3xl cursor-pointer"
+            className="text-emerald-500 text-3xl cursor-pointer"
             onClick={() => product && dispatch(decreaseAmount(id))}
             disabled={!product || product.amount === 0}
           >
