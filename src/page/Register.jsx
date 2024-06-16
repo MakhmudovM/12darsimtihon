@@ -30,7 +30,7 @@ function Register() {
         loop
         muted
       >
-        <source src="../../public/freecompress-cooking-pastas-healthy-eating-food-food-pasta-pasta-9821-full.mp4" type="video/mp4" />
+        <source src="/public/freecompress-cooking-pastas-healthy-eating-food-food-pasta-pasta-9821-full.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <Form
