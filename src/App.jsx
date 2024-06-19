@@ -4,33 +4,51 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-//layouts
+// layouts
 import MainLayout from "./layout/MainLayout";
 
-//pages
-import Home from './page/Home'
+// pages
+import Home from './page/Home';
 import Login from "./page/Login";
 import Register from "./page/Register";
 import Create from "./page/Create";
 import RecipeDetail from "./page/RecipeDetail";
 import Chart from "./page/Chart";
-import Cart from './page/Cart'
+import Cart from './page/Cart';
 
-//components
+// components
 import Error from "./components/Error";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "./features/userSlice";
+import { login, isAuthReady, clear } from "./features/userSlice";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
-import { isAuthReady } from "./features/userSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.currentUser);
+  const { user, authReady } = useSelector((state) => state.currentUser);
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Используйте только сериализуемые данные
+        dispatch(login({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName
+        }));
+      } else {
+        dispatch(clear());
+      }
+      dispatch(isAuthReady());
+    });
+
+    return () => unsubscribe();
+  }, [dispatch]);
+
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -39,7 +57,7 @@ function App() {
           <MainLayout />
         </ProtectedRoutes>
       ),
-      // errorElement: <Error />,
+      errorElement: <Error />,
       children: [
         {
           index: true,
@@ -66,24 +84,19 @@ function App() {
     {
       path: "/login",
       element: user ? <Navigate to="/" /> : <Login />,
+      errorElement: <Error />,
     },
     {
       path: "/register",
       element: user ? <Navigate to="/" /> : <Register />,
+      errorElement: <Error />,
     },
   ]);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        dispatch(login(user));
-        dispatch(isAuthReady());
-      }
-    });
-  }, [user]);
+  if (!authReady) return <div>Loading...</div>;
 
-  return <>{<RouterProvider router={routes} />}</>;
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
+

@@ -1,4 +1,3 @@
-// src/features/userSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const defaultState = {
@@ -11,7 +10,12 @@ const userSlice = createSlice({
   initialState: defaultState,
   reducers: {
     login: (state, { payload }) => {
-      state.user = payload;
+      // Сохраняем только сериализуемые данные пользователя
+      state.user = {
+        uid: payload.uid,
+        email: payload.email,
+        displayName: payload.displayName,
+      };
     },
     isAuthReady: (state) => {
       state.authReady = true;

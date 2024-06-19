@@ -4,17 +4,13 @@ import { db } from "../firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
 import { BsCart3 } from "react-icons/bs";
-import {
-  addProduct,
-  decreaseAmount,
-  increaseAmount,
-} from "../features/productSlice";
+import { addProduct, decreaseAmount, increaseAmount } from "../features/productSlice";
 
 function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.products?.items.find((item) => item.id === id));
+  const product = useSelector((state) => state.products.items.find((item) => item.id === id));
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -99,3 +95,4 @@ function RecipeDetail() {
 }
 
 export default RecipeDetail;
+
