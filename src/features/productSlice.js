@@ -1,4 +1,3 @@
-// features/productSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -44,8 +43,11 @@ const productSlice = createSlice({
         state.items[existingProductIndex].amount += 1;
       }
     },
+    removeProduct: (state, action) => {
+      state.items = state.items.filter((item) => item.id !== action.payload);
+    },
   },
 });
 
-export const { addProduct, decreaseAmount, increaseAmount } = productSlice.actions;
+export const { addProduct, decreaseAmount, increaseAmount, removeProduct } = productSlice.actions;
 export default productSlice.reducer;
