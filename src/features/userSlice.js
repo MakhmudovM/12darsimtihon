@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const defaultState = {
-  user: null,
+  user: {
+    uid: null,
+    displayName: null,
+    photoURL: null,
+    email: null,
+  },
   authReady: false,
 };
 
@@ -10,21 +15,22 @@ const userSlice = createSlice({
   initialState: defaultState,
   reducers: {
     login: (state, { payload }) => {
-      // Сохраняем только сериализуемые данные пользователя
-      state.user = {
-        uid: payload.uid,
-        email: payload.email,
-        displayName: payload.displayName,
-      };
+      state.user = payload;
     },
     isAuthReady: (state) => {
       state.authReady = true;
     },
     clear: (state) => {
-      state.user = null;
+      state.user = {
+        uid: null,
+        displayName: null,
+        photoURL: null,
+        email: null,
+      };
     },
   },
 });
 
 export const { login, isAuthReady, clear } = userSlice.actions;
 export default userSlice.reducer;
+

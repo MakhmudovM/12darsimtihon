@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
-import { BsCart3 } from "react-icons/bs";
+import { CiViewList } from "react-icons/ci";
 import { addProduct, decreaseAmount, increaseAmount } from "../features/productSlice";
 
 function RecipeDetail() {
@@ -53,16 +53,17 @@ function RecipeDetail() {
           <p>No images available</p>
         )}
       </div>
-      <p className="text-lg mt-6 ml-auto mr-auto">{recipe.method}</p>
-      <p className="text-lg mt-4">
+      <span className="text-2xl font-bold mt-5">Method:</span>
+      <p className="text-xl font-medium mt-4 ml-auto mr-auto">{recipe.method}</p>
+      <p className="text-xl mt-4 font-medium">
         <strong>Cooking Time:</strong> {recipe.cookingTime}
       </p>
-      <p className="text-lg mt-4 ml-0">
+      <p className="text-lg mt-4 ml-0 mb-5">
         <strong>Ingredients:</strong>
       </p>
       <ul className="list-disc list-inside flex gap-2">
         {recipe.ingredients.map((ingredient, index) => (
-          <li className=" bg-emerald-400 px-3 rounded-lg" key={index}>{ingredient}</li>
+          <li className=" bg-emerald-400 px-3 rounded-lg font-medium" key={index}>{ingredient}</li>
         ))}
       </ul>
       <div className="mt-8 flex gap-9">
@@ -86,7 +87,7 @@ function RecipeDetail() {
           className="btn btn-secondary bg-emerald-500 w-48 add"
           onClick={handleAddToCart}
         >
-          <BsCart3 className="" />
+          <CiViewList className="w-6 h-6" />
           Add to list
         </button>
       </div>

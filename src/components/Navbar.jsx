@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { clear } from "../features/userSlice";
 import { Link } from "react-router-dom";
-import { TiShoppingCart } from "react-icons/ti"
+import { CiViewList } from "react-icons/ci";
 
 
 import Weather from "./Weather";
@@ -85,7 +85,7 @@ function Navbar() {
 
           <div className="flex gap-6 items-center justify-center">
             <div className="dropdown dropdown-end">
-              <Link to='cart'><TiShoppingCart className="w-6 h-6"/></Link>
+              <Link to='cart'><CiViewList className="w-7 h-7 ml-2"/></Link>
              
               
             </div>
