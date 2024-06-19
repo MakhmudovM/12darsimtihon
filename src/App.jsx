@@ -11,7 +11,7 @@ import Cart from "./page/Cart";
 import Error from "./components/Error";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { useSelector, useDispatch } from "react-redux";
-import { login, isAuthReady } from "./features/userSlice";
+import { login, isAuthReady, clear } from "./features/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
 
@@ -54,6 +54,8 @@ const App = () => {
         const { uid, displayName, photoURL, email } = user;
         dispatch(login({ uid, displayName, photoURL, email }));
         dispatch(isAuthReady());
+      } else {
+        dispatch(clear()); // Вызов clear при выходе пользователя
       }
     });
   }, [dispatch]);

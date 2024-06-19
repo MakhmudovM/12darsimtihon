@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const defaultState = {
-  user: {
-    uid: null,
-    displayName: null,
-    photoURL: null,
-    email: null,
-  },
+  user: null,
   authReady: false,
 };
 
@@ -21,16 +16,11 @@ const userSlice = createSlice({
       state.authReady = true;
     },
     clear: (state) => {
-      state.user = {
-        uid: null,
-        displayName: null,
-        photoURL: null,
-        email: null,
-      };
+      state.user = null;
+      state.authReady = false;
     },
   },
 });
 
 export const { login, isAuthReady, clear } = userSlice.actions;
 export default userSlice.reducer;
-
