@@ -87,7 +87,7 @@ function RecipeDetail() {
           onClick={handleAddToCart}
         >
           <BsCart3 className="" />
-          Add to cart
+          Add to list
         </button>
       </div>
     </div>
